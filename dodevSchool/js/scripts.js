@@ -1,34 +1,67 @@
 ////////////////////////////////////////////////////////////////////////
 ////////////////// FAÇA O SEU CÓDIGO AQUI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////////////////////////////////////////////////////
-
+//// PROGRAMA PRINCIPAL
 class Aluno {
-  
+  Nome
+  Idade
+  Nota
+  constructor(nome, idade, nota) {
+    this.Nome = nome
+    this.Idade = idade
+    this.Nota = nota
+  }
 }
 
 // Array
-
+let arrayAlunos = []
 
 //funções projeto
 
-function CadastrarAluno() {
-  
+function CadastrarAluno(nome, idade, nota, array) {
+  let aluno = new Aluno(nome, idade, nota)
+  if (!array.some(x => x.Nome == nome))
+    array.push(nome)
+  return aluno
 }
 
-function OrdenarPorNota() {
- 
+function OrdenarPorNota(array) {
+ array.sort((a, b) => a.Nota - b.Nota)
+ return array
 }
 
-function OrdenarPorIdade() {
-
+function OrdenarPorIdade(array) {
+  array.sort((a, b) => a.Idade - b.Idade)
+  return array
 }
 
-function OrdenarPorNome() {
+function OrdenarPorNome(array) {
+  array.sort((a, b) => {
+    let nomeA = a.Nome.toUpperCase();
+    let nomeB = b.Nome.toUpperCase();
 
+    if (nomeA > nomeB) {
+      return 1
+    }
+    if (nomeA < nomeB) {
+      return -1
+    }
+    if (nomeA === nomeB) {
+      return 0
+    }
+  });
+
+  return array
 }
 
-function CalcularMedia(){
+function CalcularMedia(array) {
+  let somaMedia = 0
+  array.forEach((aluno) =>{
+    somaMedia += Number(aluno.Nota)
+  })
 
+  const media = somaMedia / array.length
+  return media
 }
 
 ////////////////////////////////////////////////////////////////////////
