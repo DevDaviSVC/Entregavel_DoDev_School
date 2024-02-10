@@ -20,8 +20,16 @@ let arrayAlunos = []
 
 function CadastrarAluno(nome, idade, nota, array) {
   let aluno = new Aluno(nome, idade, nota)
-  if (!array.some(x => x.Nome == nome))
-    array.push(nome)
+  let alunoRepetido = false
+  arrayAlunos.forEach(aluno => {
+    if (aluno.Nome == nome) {
+      alunoRepetido = true
+    }
+  })
+
+  if (!alunoRepetido) {
+    arrayAlunos.push(aluno)
+  }
   return aluno
 }
 
